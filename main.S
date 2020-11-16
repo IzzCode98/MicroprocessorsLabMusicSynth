@@ -12,6 +12,4 @@ int_hi:	org	0x0008	; high vector, no low vector
 start:	call	DAC_Setup
 	goto	$	; Sit in infinite loop
 
-	end	rst
-	
-	; checking this pushes
+	end	rst	; checking this pushes
