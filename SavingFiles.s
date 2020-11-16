@@ -12,6 +12,7 @@
 
 ;Note that if the file is 'green' it is because you have note yet committed/saved changes
 
-;Note that if you change file names on MPLab, this saves to GitHub as a new file:
-	;therefore you must go to GitHub and delete the file with the old file name manually
-	;this applies to any files you want deleted, deleting them on MPLab will NOT delete them on GitHub
+;If you make multiple changes across multiple files, or delete or rename any file:
+    ; you must first click on the Head folder (i.e. 'Music_Synth') and then Commit the changes
+    ; this commits any changes across the whole project
+    ; DON'T FORGET TO THEN PUSH UPSTREAM
