@@ -1,92 +1,36 @@
 ;Jacob please paste your keyboard code here
-
-
 #include <pic18_chip_select.inc>
-
 #include <xc.inc>
-
-
- 
-
-
- 
-
-
- 
 
 psect code, abs
 
-
- 
-
 main:
-
     org 0x0
-
-    
-
     goto    start
-
-
- 
-
-
- 
-
-    org     0x100     ; Main code starts here at address 0x100
-
+    org     0x100	; Main code starts here at address 0x100
     
-
 start:
-
+    clrf    LATH	; sets PORTH as output
     
-
-   
-
-    clrf    LATH     ; sets PORTH as output
-
-    
-
     banksel PADCFG1     ; selects bank to the location of PADCFG1
-
     bsf     REPU     ; PORT e PULLUPS on
-
     movlb   0x00     ; set bsr back to Bank 0
 
-    
-
-    
-
-    clrf    LATE     ; sets PORTE as output
-
-   
-
-    
+    clrf    LATE     ; sets PORTE as output 
 
     ;movff   0x03, PORTH     ; what was this for?
-
-    
-
-    
+ 
 
     movlw   0x0f     ; 00001111 binary for first four bits as input
 
 ;    movwf   0x30, A
 
-    
-
     movwf   TRISE, A     ; set tristate D value to be 1's for 1st four pins therefore input pins
 
-
     movlw   0xFF     ; delay length
-
     movwf   0x10, A
 
     call    delay
-
-    
-
-;    
 
     movff   PORTE, 0x30     ; move the value input at port E to address 0x30
 
