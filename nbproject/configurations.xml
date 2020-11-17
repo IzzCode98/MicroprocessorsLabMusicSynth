@@ -17,6 +17,7 @@
       <itemPath>DAC_Interrupt.S</itemPath>
       <itemPath>SavingFiles.s</itemPath>
       <itemPath>Keyboard_Input.s</itemPath>
+      <itemPath>Example.s</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
