@@ -22,7 +22,7 @@
 ;    movwf   0x10, A
 ;    call    delay
 ;
-;    movff   PORTE, 0x30     ; move the value input at port E to address 0x30
+;    movff   PORTE, 0x30     ; move the value input at port E to address 0x30, analyse rows
 ;
 ;        
 ; 
@@ -34,11 +34,11 @@
 ;;    movwf   0x10, A    
 ;;    call    delay   
 ;; 
-;;    movff   PORTE, 0x40    
+;;    movff   PORTE, 0x40    ; move the value input at port E to address 0x40, anbalyse columns
 ;
 ;    movlw   0x0
 ;    movwf   TRISH, A     ; PORT H all output
-;    clrf    LATH, A     ; clears the output
+;    clrf    LATH, A     ; clears the output ; move this into set up code
 ;    bra     loaddata
 ;    
 ;
@@ -46,8 +46,8 @@
 ;;    movf    0x30, W, A
 ;;    iorwf   0x40, W, A
 ;;    movwf   0x50, A
-;    movff   0x30, PORTH, A
-;    goto    $     ; Re-run program from start
+;    movff   0x50, PORTH, A
+;    goto    start     ; Re-run program from start
 ; 
 ;
 ;delay:
