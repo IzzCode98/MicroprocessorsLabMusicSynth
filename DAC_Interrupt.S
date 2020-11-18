@@ -10,14 +10,14 @@ DAC_Int_Hi:
 	incf	LATJ, F, A	; increment PORTJ
 	bcf	TMR0IF		; clear interrupt flag
 	retfie	f		; fast return from interrupt
-
+	
 DAC_WritePin:
 	movlw	00000000B	; 
 	movwf	PORTH, A	; set write pin low
-	nop			; delay between changing write pin needs to be 40ns so less than 1 instruction cycle
+	nop
 	movlw	00000001B	; 
 	movwf	PORTH, A	; set write pin high
-	return
+	return	
 
 DAC_Setup:
 	clrf	TRISJ, A	; Set PORTJ as all outputs
