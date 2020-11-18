@@ -30,7 +30,7 @@ DAC_Setup:
 	clrf	LATJ, A		; Clear PORTJ outputs
 	clrf	TRISH, A	; Set PORTH as all outputs
 	clrf	LATH, A		; Clear PORTH outputs
-	movlw	10000111B	; Set timer0 to 16-bit, Fosc/4
+	movlw	10001000B	; Set timer0 to 16-bit, Fosc/4
 	movwf	T0CON, A	; = 16MHz clock rate
 	bsf	TMR0IE		; Enable timer0 interrupt
 	bsf	GIE		; Enable all interrupts

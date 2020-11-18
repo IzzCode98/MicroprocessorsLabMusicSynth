@@ -12,13 +12,13 @@ psect code, abs
 ;    org     0x100     ; Main code starts here at address 0x100
  
 keypad_setup:   
-    clrf    TRISH     ; sets PORTH as output
+    clrf    TRISH, A     ; sets PORTH as output
     banksel PADCFG1     ; selects bank to the location of PADCFG1
     bsf     REPU     ; PORT e PULLUPS on
 
     movlb   0x00     ; set bsr back to Bank 0
 
-    clrf    LATE     ; sets PORTE as output
+    clrf    LATE, A     ; sets PORTE as output
     bra	    keypad_loading
 
 keypad_loading:
