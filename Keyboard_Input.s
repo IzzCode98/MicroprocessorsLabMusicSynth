@@ -5,11 +5,11 @@
 
 psect code, abs
 
-
-main:
-    org 0x0
-    goto    keypad_setup
-    org     0x100     ; Main code starts here at address 0x100
+;
+;main:
+;    org 0x0
+;    goto    keypad_setup
+;    org     0x100     ; Main code starts here at address 0x100
  
 keypad_setup:   
     clrf    TRISH     ; sets PORTH as output
@@ -58,4 +58,4 @@ delay:
     return
 
 
-end main
+end
