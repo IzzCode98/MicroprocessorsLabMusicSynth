@@ -10,6 +10,7 @@ int_hi:	org	0x0008	; high vector, no low vector
 	goto	DAC_Int_Hi
 	
 start:	call	DAC_Setup
+	call	DAC_WritePin
 	goto	$	; Sit in infinite loop
 
 	end	rst	; checking this pushes

@@ -1,6 +1,6 @@
 #include <xc.inc>
 	
-global	DAC_Setup, DAC_Int_Hi
+global	DAC_Setup, DAC_Int_Hi, DAC_WritePin
     
 psect	dac_code, class=CODE
 	
@@ -11,9 +11,19 @@ DAC_Int_Hi:
 	bcf	TMR0IF		; clear interrupt flag
 	retfie	f		; fast return from interrupt
 
+DAC_WritePin:
+	movlw	00000000B	; 
+	movwf	PORTH, A	; set write pin low
+	nop			; delay between changing write pin needs to be 40ns so less than 1 instruction cycle
+	movlw	00000001B	; 
+	movwf	PORTH, A	; set write pin high
+	return
+
 DAC_Setup:
 	clrf	TRISJ, A	; Set PORTJ as all outputs
 	clrf	LATJ, A		; Clear PORTJ outputs
+	clrf	TRISH, A	; Set PORTH as all outputs
+	clrf	LATH, A		; Clear PORTH outputs
 	movlw	10000111B	; Set timer0 to 16-bit, Fosc/4/256
 	movwf	T0CON, A	; = 62.5KHz clock rate, approx 1sec rollover
 	bsf	TMR0IE		; Enable timer0 interrupt
