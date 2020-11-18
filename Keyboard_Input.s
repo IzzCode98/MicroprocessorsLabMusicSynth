@@ -10,23 +10,15 @@
 ;    org     0x100	; Main code starts here at address 0x100
 ;    
 ;start:
-;    clrf    LATH	; sets PORTH as output
+;    clrf    TRISH	; sets PORTH as output
 ;    
 ;    banksel PADCFG1     ; selects bank to the location of PADCFG1
 ;    bsf     REPU     ; PORT e PULLUPS on
 ;    movlb   0x00     ; set bsr back to Bank 0
 ;
-;    clrf    LATE     ; sets PORTE as output 
+;    clrf    TRISE     ; set tristate D value to be 1's for 1st four pins therefore input pins
 ;
-;    ;movff   0x03, PORTH     ; what was this for?
-; 
-;
-;    movlw   0x0f     ; 00001111 binary for first four bits as input
-;
-;
-;    movwf   TRISE, A     ; set tristate D value to be 1's for 1st four pins therefore input pins
-;
-;    movlw   0xFF     ; delay length
+;    movlw   0x18     ; delay length
 ;    movwf   0x10, A
 ;    call    delay
 ;
@@ -38,7 +30,7 @@
 ;;      
 ;;    movwf   TRISE, A     ; set tristate D value to be 1's for last four pins therefore input pins
 ;;
-;;    movlw   0xFF     ; delay length
+;;    movlw   0x18     ; delay length
 ;;    movwf   0x10, A    
 ;;    call    delay   
 ;; 
