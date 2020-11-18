@@ -46,8 +46,8 @@
 ;;    movf    0x30, W, A
 ;;    iorwf   0x40, W, A
 ;;    movwf   0x50, A
-;    movff   0x30, PORTH, A
-;    goto    $     ; Re-run program from start
+;    movff   0x50, PORTH, A
+;    goto    start     ; Re-run program from start
 ; 
 ;
 ;delay:
