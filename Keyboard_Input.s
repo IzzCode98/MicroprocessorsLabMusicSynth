@@ -10,13 +10,13 @@
 ;    org     0x100	; Main code starts here at address 0x100
 ;    
 ;start:
-;    clrf    LATH	; sets PORTH as output
+;    clrf    TRISH	; sets PORTH as output
 ;    
 ;    banksel PADCFG1     ; selects bank to the location of PADCFG1
 ;    bsf     REPU     ; PORT e PULLUPS on
 ;    movlb   0x00     ; set bsr back to Bank 0
 ;
-;    clrf    LATE     ; sets PORTE as output 
+;    clrf    TRISE     ; sets PORTE as output 
 ;
 ;    ;movff   0x03, PORTH     ; what was this for?
 ; 
