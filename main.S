@@ -14,8 +14,8 @@ start:	call	DAC_Setup
 	goto	run	
 	
 run:
-    call    DAC_WritePin
-    goto    run
+    ;call    DAC_WritePin
+    goto    $
 
 	end	rst	; checking this pushes
  
