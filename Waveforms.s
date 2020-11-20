@@ -10,9 +10,9 @@ psect	wave_code, class=CODE
 Reset_wave:
 	counter EQU FSR0	; Address of counter variable
 	square EQU  FSR1
-	movlw	0xFF		; 
+	movlw	0x80		; 
 	movwf 	counter, A	; our counter register
-	movlw	0xFF
+	movlw	0x80
 	movwf	square, A
 	return
 	
@@ -36,7 +36,7 @@ Square_Wave:
 	return
 	
 Sq1:
-	movlw	0x80	;halfway point in counter
+	movlw	0x40	;halfway point in counter
 	CPFSLT	counter, A  ;if counter value is smaller than 0x80 then skip next line
 	return
 	movlw	0x00

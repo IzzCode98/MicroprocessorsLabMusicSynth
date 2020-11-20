@@ -12,8 +12,8 @@ DAC_Int_Hi:
 	retfie	f		; if not then return
 	
 	
-	;call	Sawtooth_Wave
-	call	Square_Wave
+	call	Sawtooth_Wave
+	;call	Square_Wave
 	
 	call	DAC_WritePin	;load data change onto converter
 	call	Load_Timer0
@@ -28,10 +28,8 @@ DAC_WritePin:
 	return	
 
 Load_Timer0:
-	movlw  0x00		; Load high byte
-	movwf  TMR0H, A
-	movlw  0x00 		; Load low byte
-	movwf  TMR0L, A
+	movff	FSR1,TMR0H, A; Load high byte
+	movff	FSR2,TMR0L, A; Load low byte
 	return
     
 DAC_Setup:
@@ -40,8 +38,8 @@ DAC_Setup:
 	clrf	TRISH, A	; Set PORTH as all outputs
 	clrf	LATH, A		; Clear PORTH outputs
 	call	Reset_wave
-	movlw	10001000B	; Set timer0 to 16-bit, Fosc/4/256 ;CHANGED
-	movwf	T0CON, A	; = 62.5KHz clock rate, approx 1sec rollover
+	movlw	10001000B	; Set timer0 to 16-bit
+	movwf	T0CON, A	; = 16MHz clock rate, 
 	bsf	TMR0IE		; Enable timer0 interrupt
 	bsf	GIE		; Enable all interrupts
 	return

@@ -2,6 +2,7 @@
 #include <xc.inc>
 
 global	Keypad_Setup, Keypad_Loading
+extrn	Test
 psect keypad_code, class=CODE
 
 ;uses PORT D and PORT E
@@ -44,7 +45,7 @@ loaddata:
     iorwf   0x40, W, A
     movwf   0x50, A
     movff   0x50, PORTD, A
-
+    call    Test
     return     ; Loops in main file
 
 delay:
