@@ -4,6 +4,7 @@ global	DAC_Setup, DAC_Int_Hi, DAC_WritePin
     
 psect	dac_code, class=CODE
 	
+; uses PORT J and PORT H
 DAC_Int_Hi:	
 	btfss	TMR0IF		; check that this is timer0 interrupt
 	retfie	f		; if not then return
