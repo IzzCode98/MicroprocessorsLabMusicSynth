@@ -12,7 +12,6 @@ int_hi:	org	0x0008	; high vector, no low vector
 	
 start:	call	DAC_Setup
 	call	Keypad_Setup
-	;call	Setup_Wave
 
 	goto	run	
 	

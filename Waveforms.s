@@ -4,20 +4,8 @@
 global	Sawtooth_Wave, Reset_wave, Square_Wave
 psect	wave_code, class=CODE
 ;will need to have same number of data points per cycle in order not to change frequency when changing waveform
-    ;51 data points
-    ;note that lookup tables run backwards based on counter
-Square_table:
-    ;addwf   PCL, counter, A
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
-    retlw 0xFF
+    
+
       
 Reset_wave:
 	counter EQU FSR0	; Address of counter variable
