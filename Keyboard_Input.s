@@ -1,4 +1,3 @@
-;Jacob please paste your keyboard code here
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
