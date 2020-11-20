@@ -2,7 +2,7 @@
 #include <xc.inc>
 
 global	Keypad_Setup, Keypad_Loading
-psect code, abs
+psect keypad_code, class=CODE
 
 ;uses PORT D and PORT E
  

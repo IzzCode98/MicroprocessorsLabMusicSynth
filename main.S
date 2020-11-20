@@ -16,7 +16,7 @@ start:	call	DAC_Setup
 	
 run:
     call    Keypad_Loading
-    bra	    run		    ;loop through keypad input for real-time response
+    bra    run		    ;loop through keypad input for real-time response
 
 	end	rst	; checking this pushes
  

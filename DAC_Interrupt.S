@@ -33,9 +33,9 @@ DAC_WritePin:
 	return	
 
 Load_Timer0:
-	movlw  0x00		; Load high byte
+	movlw  0xFF		; Load high byte
 	movwf  TMR0H, A
-	movlw  0x00    		; Load low byte
+	movlw  0xDD    		; Load low byte
 	movwf  TMR0L, A
 	return
     
