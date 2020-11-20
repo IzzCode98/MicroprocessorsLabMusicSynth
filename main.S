@@ -1,3 +1,4 @@
+#include <pic18_chip_select.inc>
 #include <xc.inc>
 
 extrn	DAC_Setup, DAC_Int_Hi, DAC_WritePin, Keypad_Setup, Keypad_Loading
@@ -11,6 +12,7 @@ int_hi:	org	0x0008	; high vector, no low vector
 	
 start:	call	DAC_Setup
 	call	Keypad_Setup
+	;call	Setup_Wave
 
 	goto	run	
 	
