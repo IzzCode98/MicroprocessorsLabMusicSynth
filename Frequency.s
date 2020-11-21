@@ -168,10 +168,6 @@ Test14:
     movlw   01111101B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test15
-    movlw  0x00		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0x00 	; Load low byte
-    movwf  LoadTMR0_LB, A
     movlw   0x01
     movwf   octave, A
     movlw   0x01
@@ -182,13 +178,6 @@ Test15:
     movlw   01111011B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test16
-    movlw  0x00		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0x00 	; Load low byte
-    movwf  LoadTMR0_LB, A
-    movlw   0x01
-    movwf   wave, A	; set waveform counter to 1   
-    movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return   
     
@@ -196,21 +185,15 @@ Test16:
     movlw   01110111B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test17
-    movlw  0x00		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0x00 	; Load low byte
-    movwf  LoadTMR0_LB, A
     movlw   0x02
-    movwf   wave, A	; set waveform counter to 2
+    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 2
+    clrf    wave, A
+    incf    wave, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return    
  
 Test17:
-    movlw  0x00		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0x00 	; Load low byte
-    movwf  LoadTMR0_LB, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when no button pressed
     return    
