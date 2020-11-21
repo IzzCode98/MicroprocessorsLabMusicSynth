@@ -1,19 +1,20 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading
+global	Keypad_Setup, Keypad_Loading, wave
 extrn	Test
 psect keypad_code, class=CODE
 
 ;uses PORT D and PORT E
  
 Keypad_Setup:   
+    wave EQU 0x70  
+    movlw   0x00
+    movwf   wave, A	; set waveform counter to 0
     clrf    TRISD, A     ; sets PORTD as output
     banksel PADCFG1     ; selects bank to the location of PADCFG1
     bsf     REPU     ; PORT e PULLUPS on
-
     movlb   0x00     ; set bsr back to Bank 0
-
     clrf    LATE, A     ; sets PORTE as output
     return
 
@@ -34,7 +35,7 @@ Keypad_Loading:
     movwf   0x10, A    
     call    delay   
 
-    movff   PORTE, 0x40    
+    movff   PORTE, 0x40    ; move the value input at port E to address 0x40
 
     movlw   0x0
     call     loaddata
@@ -42,9 +43,9 @@ Keypad_Loading:
 
 loaddata:
     movf    0x30, W, A
-    iorwf   0x40, W, A
-    movwf   0x50, A
-    movff   0x50, PORTD, A
+    iorwf   0x40, W, A	;combine the 4 bits at address 0x30 with the 4 bits at address 0x30
+    movwf   0x50, A	;output combination to address 0x50
+    movff   0x50, PORTD, A  ;output to Port D
     call    Test
     return     ; Loops in main file
 

@@ -2,6 +2,7 @@
 #include <xc.inc>
 
 global	Test
+extrn   Keypad_Setup, wave
 psect freq_code, class=CODE
 
 ;uses PORT D
@@ -140,10 +141,12 @@ Test14:
     movlw   01111101B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test15
-    movlw  0x00	; Load high byte
+    movlw  0x00		; Load high byte
     movwf  FSR1, A
     movlw  0x00 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   wave, A	; set waveform counter to 0
     return    
     
 Test15:
@@ -154,6 +157,8 @@ Test15:
     movwf  FSR1, A
     movlw  0x00 	; Load low byte
     movwf  FSR2, A
+    movlw   0x01
+    movwf   wave, A	; set waveform counter to 1   
     return   
     
 Test16:
@@ -164,10 +169,12 @@ Test16:
     movwf  FSR1, A
     movlw  0x00 	; Load low byte
     movwf  FSR2, A
+    movlw   0x02
+    movwf   wave, A	; set waveform counter to 2
     return    
  
 Test17:
-    movlw  0x00	; Load high byte
+    movlw  0x00		; Load high byte
     movwf  FSR1, A
     movlw  0x00 	; Load low byte
     movwf  FSR2, A

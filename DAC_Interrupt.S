@@ -2,7 +2,7 @@
 #include <xc.inc>
 	
 global	DAC_Setup, DAC_Int_Hi, DAC_WritePin
-extrn   Sawtooth_Wave, Reset_wave, Square_Wave
+extrn   Sawtooth_Wave, Reset_wave, Square_Wave, Waveform
     
 psect	dac_code, class=CODE
 	
@@ -11,9 +11,7 @@ DAC_Int_Hi:
 	btfss	TMR0IF		; check that this is timer0 interrupt
 	retfie	f		; if not then return
 	
-	
-	call	Sawtooth_Wave
-	;call	Square_Wave
+	call	Waveform	;calls waveform based on wave counter
 	
 	call	DAC_WritePin	;load data change onto converter
 	call	Load_Timer0
@@ -39,7 +37,7 @@ DAC_Setup:
 	clrf	LATH, A		; Clear PORTH outputs
 	call	Reset_wave
 	movlw	10001000B	; Set timer0 to 16-bit
-	movwf	T0CON, A	; = 16MHz clock rate, 
+	movwf	T0CON, A	; = 16MHz clock rate 
 	bsf	TMR0IE		; Enable timer0 interrupt
 	bsf	GIE		; Enable all interrupts
 	return

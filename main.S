@@ -10,9 +10,8 @@ rst:	org	0x0000	; reset vector
 int_hi:	org	0x0008	; high vector, no low vector
 	goto	DAC_Int_Hi
 	
-start:	call	DAC_Setup
-	call	Keypad_Setup
-
+start:	call	DAC_Setup   ;set up Port J, Port H, start Timer0 for interrupt, reset variables
+	call	Keypad_Setup	;set up Port E, Port D
 	goto	run	
 	
 run:
