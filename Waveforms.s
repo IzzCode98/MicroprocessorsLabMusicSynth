@@ -2,7 +2,7 @@
 #include <xc.inc>
 	
 global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform
-extrn   Keypad_Setup, wave
+extrn   Keypad_Setup, wave, no_wave
 psect	wave_code, class=CODE
 ;will need to have same number of data points per cycle in order not to change frequency when changing waveform
     ;use counter variable such that it resets wave once it's reached zero to ensure same data points each time
@@ -19,6 +19,8 @@ Reset_wave:
 	return
 	
 Waveform:
+    TSTFSZ  no_wave, A	;check if wave is on (=0) or off, skip if on
+    goto    No_Wave
     movlw   0x01	
     CPFSEQ  wave, A	;compare wave with W, skip if equal
     goto    Waveform2
@@ -27,8 +29,12 @@ Waveform:
 Waveform2:
     movlw   0x02	
     CPFSEQ  wave, A	;compare wave with W, skip if equal
-    goto    No_Wave
+    goto    Waveform3
     call    Square_Wave
+    return
+Waveform3:
+    movlw   0xFF
+    movwf   LATJ, A
     return
 No_Wave:   
     movlw   0x00

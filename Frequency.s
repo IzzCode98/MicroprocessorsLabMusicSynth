@@ -2,7 +2,7 @@
 #include <xc.inc>
 
 global	Test
-extrn   Keypad_Setup, wave
+extrn   Keypad_Setup, wave, no_wave
 psect freq_code, class=CODE
 
 ;uses PORT D
@@ -15,6 +15,8 @@ Test:
     movwf  FSR1, A
     movlw  0x1E 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test2:
@@ -25,6 +27,8 @@ Test2:
     movwf  FSR1, A
     movlw  0x9E 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test3:
@@ -35,6 +39,8 @@ Test3:
     movwf  FSR1, A
     movlw  0x16 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
 
 Test4:
@@ -45,6 +51,8 @@ Test4:
     movwf  FSR1, A
     movlw  0x88 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test5:
@@ -55,6 +63,8 @@ Test5:
     movwf  FSR1, A
     movlw  0xF3 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test6:
@@ -65,6 +75,8 @@ Test6:
     movwf  FSR1, A
     movlw  0x58 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test7:
@@ -75,6 +87,8 @@ Test7:
     movwf  FSR1, A
     movlw  0xB8 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test8:
@@ -85,6 +99,8 @@ Test8:
     movwf  FSR1, A
     movlw  0x12 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test9:
@@ -95,6 +111,8 @@ Test9:
     movwf  FSR1, A
     movlw  0x67 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test10:
@@ -105,6 +123,8 @@ Test10:
     movwf  FSR1, A
     movlw  0xB8 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test11:
@@ -115,6 +135,8 @@ Test11:
     movwf  FSR1, A
     movlw  0x03 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return
     
 Test12:
@@ -125,6 +147,8 @@ Test12:
     movwf  FSR1, A
     movlw  0x4B 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return 
     
 Test13:
@@ -135,6 +159,8 @@ Test13:
     movwf  FSR1, A
     movlw  0x8F 	; Load low byte
     movwf  FSR2, A
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
     return    
     
 Test14:
@@ -147,6 +173,8 @@ Test14:
     movwf  FSR2, A
     movlw   0x00
     movwf   wave, A	; set waveform counter to 0
+    movlw   0x01
+    movwf   no_wave, A	; show no wave when button pressed
     return    
     
 Test15:
@@ -159,6 +187,8 @@ Test15:
     movwf  FSR2, A
     movlw   0x01
     movwf   wave, A	; set waveform counter to 1   
+    movlw   0x01
+    movwf   no_wave, A	; show no wave when button pressed
     return   
     
 Test16:
@@ -171,6 +201,8 @@ Test16:
     movwf  FSR2, A
     movlw   0x02
     movwf   wave, A	; set waveform counter to 2
+    movlw   0x01
+    movwf   no_wave, A	; show no wave when button pressed
     return    
  
 Test17:
@@ -178,5 +210,7 @@ Test17:
     movwf  FSR1, A
     movlw  0x00 	; Load low byte
     movwf  FSR2, A
+    movlw   0x01
+    movwf   no_wave, A	; show no wave when no button pressed
     return    
   
