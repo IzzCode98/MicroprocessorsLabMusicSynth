@@ -1,7 +1,7 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading, wave
+global	Keypad_Setup, Keypad_Loading, wave, no_wave
 extrn	Test
 psect keypad_code, class=CODE
 
@@ -9,8 +9,11 @@ psect keypad_code, class=CODE
  
 Keypad_Setup:   
     wave EQU 0x70  
-    movlw   0x00
+    movlw   0x01
     movwf   wave, A	; set waveform counter to 0
+    no_wave EQU 0x75  
+    movlw   0x01
+    movwf   no_wave, A	; begin with no wave
     clrf    TRISD, A     ; sets PORTD as output
     banksel PADCFG1     ; selects bank to the location of PADCFG1
     bsf     REPU     ; PORT e PULLUPS on
