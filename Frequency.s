@@ -1,8 +1,9 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Test
-extrn   Keypad_Setup, wave, no_wave
+global	Test, LoadTMR0_LB, LoadTMR0_HB
+extrn   Keypad_Setup, wave, no_wave, octave, LoadTMR0_LB, LoadTMR0_HB
+  
 psect freq_code, class=CODE
 
 ;uses PORT D
@@ -12,9 +13,9 @@ Test:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test2
     movlw  0xF7		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x1E 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -24,9 +25,9 @@ Test2:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test3
     movlw  0xF7		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x9E 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -36,9 +37,9 @@ Test3:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test4
     movlw  0xF8		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x16 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -48,9 +49,9 @@ Test4:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test5
     movlw  0xF8		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x88 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -60,9 +61,9 @@ Test5:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test6
     movlw  0xF8		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0xF3 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -72,9 +73,9 @@ Test6:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test7
     movlw  0xF9		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x58 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -84,9 +85,9 @@ Test7:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test8
     movlw  0xF9		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0xB8 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -96,9 +97,9 @@ Test8:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test9
     movlw  0xFA		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x12 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -108,9 +109,9 @@ Test9:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test10
     movlw  0xFA		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x67 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -120,9 +121,9 @@ Test10:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test11
     movlw  0xFA		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0xB8 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -132,9 +133,9 @@ Test11:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test12
     movlw  0xFB		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x03 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
@@ -144,9 +145,9 @@ Test12:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test13
     movlw  0xFB		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x4B 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return 
@@ -156,9 +157,9 @@ Test13:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test14
     movlw  0xFB		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x8F 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return    
@@ -168,11 +169,11 @@ Test14:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test15
     movlw  0x00		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x00 	; Load low byte
-    movwf  FSR2, A
-    movlw   0x00
-    movwf   wave, A	; set waveform counter to 0
+    movwf  LoadTMR0_LB, A
+    movlw   0x01
+    movwf   octave, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return    
@@ -182,9 +183,9 @@ Test15:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test16
     movlw  0x00		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x00 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x01
     movwf   wave, A	; set waveform counter to 1   
     movlw   0x01
@@ -196,9 +197,9 @@ Test16:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test17
     movlw  0x00		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x00 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x02
     movwf   wave, A	; set waveform counter to 2
     movlw   0x01
@@ -207,9 +208,9 @@ Test16:
  
 Test17:
     movlw  0x00		; Load high byte
-    movwf  FSR1, A
+    movwf  LoadTMR0_HB, A
     movlw  0x00 	; Load low byte
-    movwf  FSR2, A
+    movwf  LoadTMR0_LB, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when no button pressed
     return    

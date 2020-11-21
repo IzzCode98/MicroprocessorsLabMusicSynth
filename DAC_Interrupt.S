@@ -2,7 +2,7 @@
 #include <xc.inc>
 	
 global	DAC_Setup, DAC_Int_Hi, DAC_WritePin
-extrn   Sawtooth_Wave, Reset_wave, Square_Wave, Waveform
+extrn   Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, LoadTMR0_LB, LoadTMR0_HB
     
 psect	dac_code, class=CODE
 	
@@ -26,8 +26,8 @@ DAC_WritePin:
 	return	
 
 Load_Timer0:
-	movff	FSR1,TMR0H, A; Load high byte
-	movff	FSR2,TMR0L, A; Load low byte
+	movff	LoadTMR0_HB,TMR0H, A; Load high byte
+	movff	LoadTMR0_LB,TMR0L, A; Load low byte
 	return
     
 DAC_Setup:
