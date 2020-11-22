@@ -2,7 +2,7 @@
 #include <xc.inc>
 
 global	Test, LoadTMR0_LB, LoadTMR0_HB
-extrn   Keypad_Setup, wave, no_wave, octave, LoadTMR0_LB, LoadTMR0_HB
+extrn   Keypad_Setup, wave, no_wave, octave, LoadTMR0_LB, LoadTMR0_HB, check_press
   
 psect freq_code, class=CODE
 
@@ -170,7 +170,6 @@ Test14:
     goto    Test15
     movlw   0x01
     movwf   octave, A
-    movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return    
     
@@ -185,16 +184,21 @@ Test16:
     movlw   01110111B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test17
+    TSTFSZ  check_press, A	;test check_press, skip if 0
+    return 
     movlw   0x02
     CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 2
     clrf    wave, A
     incf    wave, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
+    movwf   check_press, A  ;set check_press to 1 while the button is pressed
     return    
  
 Test17:
     movlw   0x01
     movwf   no_wave, A	; show no wave when no button pressed
+    movlw   0x00
+    movwf   check_press, A ; set check_press to 0 when no button is pressed
     return    
   

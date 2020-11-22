@@ -1,18 +1,19 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, LoadTMR0_HB, LoadTMR0_LB
+global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, LoadTMR0_HB, LoadTMR0_LB, check_press
 extrn	Test
 
 psect	udata_acs   ; reserve data space in access ram
 wave:    ds 1    ; reserve one byte for wave variable
 no_wave:    ds 1    ; reserve one byte for no wave variable
 octave:    ds 1    ; reserve one byte for octave variable
-key_column:    ds 1    ; reserve one byte for octave variable
-key_row:    ds 1    ; reserve one byte for octave variable
-key__input:    ds 1    ; reserve one byte for octave variable
-LoadTMR0_HB:    ds 1    ; reserve one byte for wave variable
-LoadTMR0_LB:    ds 1    ; reserve one byte for no wave variable
+key_column:    ds 1    ; reserve one byte for key_column variable
+key_row:    ds 1    ; reserve one byte for key_row variable
+key__input:    ds 1    ; reserve one byte for key__input variable
+LoadTMR0_HB:    ds 1    ; reserve one byte for LoadTMR0_HB variable
+LoadTMR0_LB:    ds 1    ; reserve one byte for no LoadTMR0_LB variable
+check_press:	ds 1	; reserve one byte for check_press variable
    
 psect keypad_code, class=CODE
 
@@ -23,10 +24,10 @@ Keypad_Setup:
     clrf    LoadTMR0_HB, A
     movlw   0x01
     movwf   wave, A	; set waveform counter to 0
-    movlw   0x01
     movwf   no_wave, A	; begin with no wave
     movlw   0x00
     movwf   octave, A	; set octave counter to 0
+    movwf   check_press, A	; set check_press counter to 0 (no button pressed)
     clrf    TRISD, A     ; sets PORTD as output
     banksel PADCFG1     ; selects bank to the location of PADCFG1
     bsf     REPU     ; PORT e PULLUPS on
