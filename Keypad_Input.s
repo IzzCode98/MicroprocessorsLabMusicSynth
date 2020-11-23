@@ -19,7 +19,7 @@ triangle:    ds 1	; reserve one byte for triangle variable
 square:    ds 1	    ; reserve one byte for square variable  
 sine_setup: ds 1    ; reserve one byte for sine_setup variable 
     
-;psect	udata_bank4 ; reserve data anywhere in RAM (here at 0x400)
+psect	udata_bank4 ; reserve data anywhere in RAM (here at 0x400)
 SineArray:    ds  0x80; reserve 128 bytes for sine data
     
 psect keypad_code, class=CODE
