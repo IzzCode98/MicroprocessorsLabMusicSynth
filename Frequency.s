@@ -12,22 +12,31 @@ Test:
     movlw   11101110B	;keypad key 1 = note A
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test2
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
+    movlw   0x00
+    CPFSGT  octave, A ;check if this is octave 0, skip if not
+    goto    Test1_Oct0
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    goto    Test1_Oct1
+    goto    Test1_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    
+Test1_Oct0:
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x1E 	; Load low byte
     movwf  LoadTMR0_LB, A
-    movlw   0x00
-    movwf   no_wave, A	; turn on wave
     return
     
-Test1_OctUp:
+Test1_Oct1:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x8E 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
-Test1_OctUp2:
+Test1_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xC6 	; Load low byte
