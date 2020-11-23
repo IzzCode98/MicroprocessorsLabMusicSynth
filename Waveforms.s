@@ -17,7 +17,7 @@ Reset_wave:
 	movlw	0x00
 	movwf	triangle, A	; set triangle to 0x00
 	movlw	0x01
-	movwf	sine_setup, A  ;set sine_setup to 0x00
+	movwf	sine_setup, A  ;set sine_setup to 0x01
 	return
 	
 Waveform:
@@ -46,6 +46,7 @@ Waveform4:
     movlw   0x00
     movwf   sine_setup, A  ;set sine_setup to 0x00
     call    Sine_wave	;move sine data points into LATJ
+    return
 No_Wave:   
     movlw   0x00
     movwf   LATJ, A

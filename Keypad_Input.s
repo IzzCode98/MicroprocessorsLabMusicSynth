@@ -17,8 +17,10 @@ check_press:	ds 1	; reserve one byte for check_press variable
 counter:    ds 1	; reserve one byte for counter variable
 triangle:    ds 1	; reserve one byte for triangle variable    
 square:    ds 1	    ; reserve one byte for square variable  
-SineArray:  ds 1    ; reserve one byte for sinearray variable 
 sine_setup: ds 1    ; reserve one byte for sine_setup variable 
+    
+psect	udata_bank4 ; reserve data anywhere in RAM (here at 0x400)
+SineArray:    ds 0x80 ; reserve 128 bytes for sine data
     
 psect keypad_code, class=CODE
 
@@ -27,7 +29,7 @@ psect keypad_code, class=CODE
 Keypad_Setup:   
     clrf    LoadTMR0_LB, A
     clrf    LoadTMR0_HB, A
-    movlw   0x03
+    movlw   0x01
     movwf   wave, A	; set waveform counter to 1
     movlw   0x01
     movwf   no_wave, A	; begin with no wave
