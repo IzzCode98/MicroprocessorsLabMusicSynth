@@ -12,20 +12,32 @@ Test:
     movlw   11101110B	;keypad key 1 = note A
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test2
+    movlw   0x00
+    movwf   no_wave, A	; turn on wave
+    movlw   0x00
+    CPFSGT  octave, A ;check if this is octave 0, skip if not
+    goto    Test1_Oct0
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    goto    Test1_Oct1
+    goto    Test1_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    
+Test1_Oct0:
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x1E 	; Load low byte
     movwf  LoadTMR0_LB, A
-    movlw   0x00
-    movwf   no_wave, A	; turn on wave
     return
     
-Test1_OctUp:
+Test1_Oct1:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x8E 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
+    
+Test1_Oct2:
+    
     
 Test2:
     movlw   11101101B	;keypad key 2 = note A#
@@ -193,8 +205,8 @@ Test16:
     goto    Test17
     TSTFSZ  check_press, A	;test check_press, skip if 0
     return 
-    movlw   0x03
-    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 3
+    movlw   0x04
+    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 4
     clrf    wave, A
     incf    wave, A
     movlw   0x01

@@ -2,7 +2,7 @@
 #include <xc.inc>
 	
 global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, Triangle_Wave
-extrn   Keypad_Setup, wave, no_wave, counter, square, triangle
+extrn   Keypad_Setup, wave, no_wave, counter, square, triangle, sine_setup, Sine_wave, Sine_setup
 psect	wave_code, class=CODE
 ;will need to have same number of data points per cycle in order not to change frequency when changing waveform
     ;use counter variable such that it resets wave once it's reached zero to ensure same data points each time
@@ -16,6 +16,8 @@ Reset_wave:
 	movwf	square, A	; set square to 0x80
 	movlw	0x00
 	movwf	triangle, A	; set triangle to 0x00
+	movlw	0x01
+	movwf	sine_setup, A  ;set sine_setup to 0x00
 	return
 	
 Waveform:
@@ -33,8 +35,17 @@ Waveform2:
     call    Square_Wave
     return
 Waveform3:
+    movlw   0x03	
+    CPFSEQ  wave, A	;compare wave with W, skip if equal
+    goto    Waveform4
     call    Triangle_Wave
     return
+Waveform4:
+    TSTFSZ  sine_setup, A   ;check that setup hasn't already been called
+    call    Sine_setup	    ; setup data table
+    movlw   0x00
+    movwf   sine_setup, A  ;set sine_setup to 0x00
+    call    Sine_wave	;move sine data points into LATJ
 No_Wave:   
     movlw   0x00
     movwf   LATJ, A
@@ -92,3 +103,4 @@ Tr2:
 	TSTFSZ	triangle, A
 	decf	triangle, A	;decrements value in triangle 2 times
 	return
+

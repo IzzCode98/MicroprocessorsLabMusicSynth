@@ -1,7 +1,7 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, LoadTMR0_HB, LoadTMR0_LB, check_press, counter, triangle, square
+global	Keypad_Setup, Keypad_Loading, SineArray, wave, no_wave, octave, sine_setup, LoadTMR0_HB, LoadTMR0_LB, check_press, counter, triangle, square
 extrn	Test
 
 psect	udata_acs   ; reserve data space in access ram
@@ -17,6 +17,8 @@ check_press:	ds 1	; reserve one byte for check_press variable
 counter:    ds 1	; reserve one byte for counter variable
 triangle:    ds 1	; reserve one byte for triangle variable    
 square:    ds 1	    ; reserve one byte for square variable  
+SineArray:  ds 1    ; reserve one byte for sinearray variable 
+sine_setup: ds 1    ; reserve one byte for sine_setup variable 
     
 psect keypad_code, class=CODE
 
