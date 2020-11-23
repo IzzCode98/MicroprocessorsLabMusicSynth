@@ -15,7 +15,6 @@
       <itemPath>main.S</itemPath>
       <itemPath>config.S</itemPath>
       <itemPath>DAC_Interrupt.S</itemPath>
-      <itemPath>SavingFiles.s</itemPath>
       <itemPath>Keypad_Input.s</itemPath>
       <itemPath>Waveforms.s</itemPath>
       <itemPath>Frequency.s</itemPath>
