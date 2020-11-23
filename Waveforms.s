@@ -1,8 +1,8 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 	
-global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform
-extrn   Keypad_Setup, wave, no_wave
+global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, Triangle_Wave
+extrn   Keypad_Setup, wave, no_wave, counter, square, triangle
 psect	wave_code, class=CODE
 ;will need to have same number of data points per cycle in order not to change frequency when changing waveform
     ;use counter variable such that it resets wave once it's reached zero to ensure same data points each time
@@ -10,12 +10,12 @@ psect	wave_code, class=CODE
 
       
 Reset_wave:
-	counter EQU FSR0	; Address of counter variable
-	square EQU  0x20	; Address of square variable
 	movlw	0x80		; 
 	movwf 	counter, A	; set counter to 0x80
 	movlw	0x80
 	movwf	square, A	; set square to 0x80
+	movlw	0x00
+	movwf	triangle, A	; set triangle to 0x00
 	return
 	
 Waveform:
@@ -33,8 +33,7 @@ Waveform2:
     call    Square_Wave
     return
 Waveform3:
-    movlw   0xFF
-    movwf   LATJ, A
+    call    Triangle_Wave
     return
 No_Wave:   
     movlw   0x00
@@ -68,5 +67,28 @@ Sq1:
 	movwf	square, A   ;move 0 into square value
 	return
 	
-
-
+Triangle_Wave:
+	movf	triangle, W, A	;move value in triangle to W
+	movwf	LATJ, A		; move W into LATJ
+	decf	counter, A	;decrement counter
+	call Tr1			
+	movlw	0x00
+	CPFSEQ	counter, A  ;if counter is 0 then skip next line
+	return
+	call	Reset_wave	;reset counter and triangle
+	return
+	
+Tr1:
+	movlw	0x40	;halfway point in counter
+	CPFSGT	counter, A  ;if counter value is greater than 0x40 then skip next line
+	goto	Tr2
+	incf	triangle, A
+	incf	triangle, A	;increments value in triangle 2 times
+	return
+	
+Tr2:
+	TSTFSZ	triangle, A
+	decf	triangle, A
+	TSTFSZ	triangle, A
+	decf	triangle, A	;decrements value in triangle 2 times
+	return

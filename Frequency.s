@@ -20,13 +20,20 @@ Test:
     movwf   no_wave, A	; turn on wave
     return
     
+Test1_OctUp:
+    movlw  0xFB		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x8E 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+    
 Test2:
     movlw   11101101B	;keypad key 2 = note A#
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test3
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x9E 	; Load low byte
+    movlw  0x9D 	; Load low byte
     movwf  LoadTMR0_LB, A
     movlw   0x00
     movwf   no_wave, A	; turn on wave
@@ -186,8 +193,8 @@ Test16:
     goto    Test17
     TSTFSZ  check_press, A	;test check_press, skip if 0
     return 
-    movlw   0x02
-    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 2
+    movlw   0x03
+    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 3
     clrf    wave, A
     incf    wave, A
     movlw   0x01

@@ -1,7 +1,7 @@
 #include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, LoadTMR0_HB, LoadTMR0_LB, check_press
+global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, LoadTMR0_HB, LoadTMR0_LB, check_press, counter, triangle, square
 extrn	Test
 
 psect	udata_acs   ; reserve data space in access ram
@@ -14,7 +14,10 @@ key__input:    ds 1    ; reserve one byte for key__input variable
 LoadTMR0_HB:    ds 1    ; reserve one byte for LoadTMR0_HB variable
 LoadTMR0_LB:    ds 1    ; reserve one byte for no LoadTMR0_LB variable
 check_press:	ds 1	; reserve one byte for check_press variable
-   
+counter:    ds 1	; reserve one byte for counter variable
+triangle:    ds 1	; reserve one byte for triangle variable    
+square:    ds 1	    ; reserve one byte for square variable  
+    
 psect keypad_code, class=CODE
 
 ;uses PORT D and PORT E
@@ -22,8 +25,9 @@ psect keypad_code, class=CODE
 Keypad_Setup:   
     clrf    LoadTMR0_LB, A
     clrf    LoadTMR0_HB, A
+    movlw   0x03
+    movwf   wave, A	; set waveform counter to 1
     movlw   0x01
-    movwf   wave, A	; set waveform counter to 0
     movwf   no_wave, A	; begin with no wave
     movlw   0x00
     movwf   octave, A	; set octave counter to 0
