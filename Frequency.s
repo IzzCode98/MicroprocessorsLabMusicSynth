@@ -435,35 +435,10 @@ Test13:
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test14
     movlw   0x00
-    movwf   no_wave, A	; turn on wave
-    movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test13_Oct0
+    movwf   octave, A
     movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
-    goto    Test13_Oct1
-    goto    Test13_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
-    
-Test13_Oct0:
-    movlw  0xFB		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0x8F 	; Load low byte
-    movwf  LoadTMR0_LB, A
-    return
-    
-Test13_Oct1:
-    movlw  0xFD		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0xC6		; Load low byte
-    movwf  LoadTMR0_LB, A
-    return
-    
-Test13_Oct2:
-    movlw  0xFE		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0xE2 	; Load low byte
-    movwf  LoadTMR0_LB, A
-    return  
+    movwf   no_wave, A	; show no wave when button pressed
+    return 
     
 Test14:
     movlw   01111101B	;keypad key 1
@@ -471,6 +446,7 @@ Test14:
     goto    Test15
     movlw   0x01
     movwf   octave, A
+    movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return    
     
@@ -478,6 +454,9 @@ Test15:
     movlw   01111011B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test16
+    movlw   0x02
+    movwf   octave, A
+    movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return   
     
@@ -487,8 +466,8 @@ Test16:
     goto    Test17
     TSTFSZ  check_press, A	;test check_press, skip if 0
     return 
-    movlw   0x03
-    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 3
+    movlw   0x04
+    CPFSLT  wave, A	;skip next instruction if wave counter is not yet at 4
     clrf    wave, A
     incf    wave, A
     movlw   0x01
