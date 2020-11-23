@@ -11,6 +11,9 @@ psect	sine_code, class=CODE
 Sine_setup:	
 	bcf	CFGS	; point to Flash program memory  
 	bsf	EEPGD 	; access Flash program memory
+	clrf	TBLPTR, A
+	clrf	FSR0, A
+	clrf	TABLAT, A
 	goto	load_data
 	; ******* My data **
 Sine_datapoints:
