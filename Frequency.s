@@ -37,7 +37,11 @@ Test1_Oct1:
     return  
     
 Test1_Oct2:
-    
+    movlw  0xFD		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xC6 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return     
     
 Test2:
     movlw   11101101B	;keypad key 2 = note A#
@@ -51,6 +55,20 @@ Test2:
     movwf   no_wave, A	; turn on wave
     return
     
+Test2_OctUp:
+    movlw  0xFB		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xCE 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return
+    
+Test2_OctUp2:
+    movlw  0xFD		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xE6		; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+    
 Test3:
     movlw   11101011B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
@@ -62,6 +80,20 @@ Test3:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
+    
+Test3_OctUp:
+    movlw  0xFC		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x0A 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return 
+    
+Test3_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x04 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
 
 Test4:
     movlw   11100111B	;keypad key 1
@@ -75,6 +107,20 @@ Test4:
     movwf   no_wave, A	; turn on wave
     return
     
+Test4_OctUp:
+    movlw  0xFC		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x43 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return 
+
+Test4_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x21 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+    
 Test5:
     movlw   11011110B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
@@ -86,6 +132,20 @@ Test5:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
+    
+Test5_OctUp:
+    movlw  0xFC 	; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x79 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return
+    
+Test5_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x3C 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
     
 Test6:
     movlw   11011101B	;keypad key 1
@@ -99,6 +159,20 @@ Test6:
     movwf   no_wave, A	; turn on wave
     return
     
+Test6_OctUp:
+    movlw  0xFC		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xAB		; Load low byte
+    movwf  LoadTMR0_LB, A
+    return
+    
+Test6_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x55		; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+    
 Test7:
     movlw   11011011B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
@@ -110,6 +184,20 @@ Test7:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
+    
+Test7_OctUp:
+    movlw  0xFC		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xDB 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return 
+    
+Test7_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x6D 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
     
 Test8:
     movlw   11010111B	;keypad key 1
@@ -123,6 +211,20 @@ Test8:
     movwf   no_wave, A	; turn on wave
     return
     
+Test8_OctUp:
+    movlw  0xFD		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x08 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return 
+    
+Test8_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x83		; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+    
 Test9:
     movlw   10111110B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
@@ -134,6 +236,20 @@ Test9:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
+    
+Test9_OctUp:
+    movlw  0xFd		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x33 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return
+    
+Test9_OctUp2:
+    movlw  0xFE	; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x99	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
     
 Test10:
     movlw   10111101B	;keypad key 1
@@ -147,6 +263,20 @@ Test10:
     movwf   no_wave, A	; turn on wave
     return
     
+Test10_OctUp:
+    movlw  0xFD		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x5B 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return
+    
+Test10_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xAD		; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+    
 Test11:
     movlw   10111011B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
@@ -158,6 +288,20 @@ Test11:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     return
+    
+Test11_OctUp:
+    movlw  0xFD		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0x81 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return 
+
+Test11_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xC0 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return      
     
 Test12:
     movlw   10110111B	;keypad key 1
@@ -171,17 +315,29 @@ Test12:
     movwf   no_wave, A	; turn on wave
     return 
     
+Test12_OctUp:
+    movlw  0xFD		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xA5 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return 
+    
+Test12_OctUp2:
+    movlw  0xFE		; Load high byte
+    movwf  LoadTMR0_HB, A
+    movlw  0xD2 	; Load low byte
+    movwf  LoadTMR0_LB, A
+    return  
+
 Test13:
     movlw   01111110B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test14
-    movlw  0xFB		; Load high byte
-    movwf  LoadTMR0_HB, A
-    movlw  0x8F 	; Load low byte
-    movwf  LoadTMR0_LB, A
     movlw   0x00
-    movwf   no_wave, A	; turn on wave
-    return    
+    movwf   octave, A
+    movlw   0x01
+    movwf   no_wave, A	; show no wave when button pressed
+    return 
     
 Test14:
     movlw   01111101B	;keypad key 1
@@ -189,6 +345,7 @@ Test14:
     goto    Test15
     movlw   0x01
     movwf   octave, A
+    movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return    
     
@@ -196,6 +353,9 @@ Test15:
     movlw   01111011B	;keypad key 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test16
+    movlw   0x02
+    movwf   octave, A
+    movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
     return   
     
