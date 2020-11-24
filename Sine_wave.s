@@ -1,6 +1,6 @@
 #include <xc.inc>
 
-extrn	counter, Reset_wave
+extrn	Reset_wave
 global	Sine_setup, Sine_wave
 
 psect data
@@ -36,10 +36,11 @@ load_data:
 Sine_loop:
         tblrd*+			; move one byte from PM to TABLAT, increment TBLPRT
 	movff	TABLAT, POSTINC0	; move read data from TABLAT to (FSR0), increment FSR0	
-	decfsz	sine_counter, A	; count down to zero from 128 then reset
+	decfsz	sine_counter, A	; count down to zero from 128 then reset counter and return
 	bra Sine_loop
 	movlw	0x80
-	movwf	sine_counter, A
+	movwf	sine_counter, A ; reset counter
+	lfsr	0, SineArray ; start at first piece of data
 	return		
 Sine_wave:
 	movff	POSTINC0, LATJ	;move each piece of data to LATJ one by one

@@ -1,6 +1,6 @@
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, sine_setup, LoadTMR0_HB, LoadTMR0_LB
+global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, LoadTMR0_HB, LoadTMR0_LB, check_press
 extrn	Test
 
 psect	udata_acs   ; reserve data space in access ram

@@ -1,7 +1,7 @@
 #include <xc.inc>
 	
 global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, Triangle_Wave
-extrn   Keypad_Setup, wave, no_wave, sine_setup, Sine_wave, Sine_setup
+extrn   Keypad_Setup, wave, no_wave, Sine_wave
 
 psect	udata_acs   ; reserve data space in access ram
 counter:    ds 1	; reserve one byte for counter variable

@@ -11,7 +11,7 @@ DAC_Int_Hi:
 	retfie	f		; if not then return
 	
 	call	Waveform	;calls waveform based on wave counter
-	;call	Sine_wave
+
 	call	DAC_WritePin	;load data change onto converter
 	call	Load_Timer0
 	bcf	TMR0IF		; clear interrupt flag
