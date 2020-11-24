@@ -1,8 +1,7 @@
-#include <pic18_chip_select.inc>
 #include <xc.inc>
 	
 global	DAC_Setup, DAC_Int_Hi, DAC_WritePin
-extrn   Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, LoadTMR0_LB, LoadTMR0_HB, Triangle_Wave
+extrn   Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, LoadTMR0_LB, LoadTMR0_HB, Triangle_Wave, Sine_wave
     
 psect	dac_code, class=CODE
 	
@@ -12,7 +11,7 @@ DAC_Int_Hi:
 	retfie	f		; if not then return
 	
 	call	Waveform	;calls waveform based on wave counter
-	
+	;call	Sine_wave
 	call	DAC_WritePin	;load data change onto converter
 	call	Load_Timer0
 	bcf	TMR0IF		; clear interrupt flag

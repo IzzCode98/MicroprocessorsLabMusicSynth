@@ -1,8 +1,13 @@
-#include <pic18_chip_select.inc>
 #include <xc.inc>
 	
 global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, Triangle_Wave
-extrn   Keypad_Setup, wave, no_wave, counter, square, triangle, sine_setup, Sine_wave, Sine_setup
+extrn   Keypad_Setup, wave, no_wave, sine_setup, Sine_wave, Sine_setup
+
+psect	udata_acs   ; reserve data space in access ram
+counter:    ds 1	; reserve one byte for counter variable
+triangle:    ds 1	; reserve one byte for triangle variable    
+square:    ds 1	    ; reserve one byte for square variable     
+    
 psect	wave_code, class=CODE
 ;will need to have same number of data points per cycle in order not to change frequency when changing waveform
     ;use counter variable such that it resets wave once it's reached zero to ensure same data points each time
@@ -16,8 +21,6 @@ Reset_wave:
 	movwf	square, A	; set square to 0x80
 	movlw	0x00
 	movwf	triangle, A	; set triangle to 0x00
-	movlw	0x01
-	movwf	sine_setup, A  ;set sine_setup to 0x01
 	return
 	
 Waveform:
@@ -26,26 +29,25 @@ Waveform:
     movlw   0x01	
     CPFSEQ  wave, A	;compare wave with W, skip if equal
     goto    Waveform2
-    call    Sawtooth_Wave
+    call    Sawtooth_Wave ;call sawtooth wave
     return
 Waveform2:
     movlw   0x02	
     CPFSEQ  wave, A	;compare wave with W, skip if equal
     goto    Waveform3
-    call    Square_Wave
+    call    Square_Wave ;call square wave
     return
 Waveform3:
     movlw   0x03	
     CPFSEQ  wave, A	;compare wave with W, skip if equal
     goto    Waveform4
-    call    Triangle_Wave
+    call    Triangle_Wave ;call triangle wave
     return
 Waveform4:
-    TSTFSZ  sine_setup, A   ;check that setup hasn't already been called
-    call    Sine_setup	    ; setup data table
-    movlw   0x00
-    movwf   sine_setup, A  ;set sine_setup to 0x00
-    call    Sine_wave	;move sine data points into LATJ
+    movlw   0x04	
+    CPFSEQ  wave, A	;compare wave with W, skip if equal
+    nop
+    call    Sine_wave	;call sine wave
     return
 No_Wave:   
     movlw   0x00

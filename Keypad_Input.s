@@ -1,7 +1,6 @@
-#include <pic18_chip_select.inc>
 #include <xc.inc>
 
-global	Keypad_Setup, Keypad_Loading, SineArray, wave, no_wave, octave, sine_setup, LoadTMR0_HB, LoadTMR0_LB, check_press, counter, triangle, square
+global	Keypad_Setup, Keypad_Loading, wave, no_wave, octave, sine_setup, LoadTMR0_HB, LoadTMR0_LB
 extrn	Test
 
 psect	udata_acs   ; reserve data space in access ram
@@ -13,14 +12,7 @@ key_row:    ds 1    ; reserve one byte for key_row variable
 key__input:    ds 1    ; reserve one byte for key__input variable
 LoadTMR0_HB:    ds 1    ; reserve one byte for LoadTMR0_HB variable
 LoadTMR0_LB:    ds 1    ; reserve one byte for no LoadTMR0_LB variable
-check_press:	ds 1	; reserve one byte for check_press variable
-counter:    ds 1	; reserve one byte for counter variable
-triangle:    ds 1	; reserve one byte for triangle variable    
-square:    ds 1	    ; reserve one byte for square variable  
-sine_setup: ds 1    ; reserve one byte for sine_setup variable 
-    
-psect	udata_bank4 ; reserve data anywhere in RAM (here at 0x400)
-SineArray:    ds  0x80; reserve 128 bytes for sine data
+check_press:	ds 1	; reserve one byte for check_press variable 
     
 psect keypad_code, class=CODE
 
@@ -29,7 +21,7 @@ psect keypad_code, class=CODE
 Keypad_Setup:   
     clrf    LoadTMR0_LB, A
     clrf    LoadTMR0_HB, A
-    movlw   0x01
+    movlw   0x04
     movwf   wave, A	; set waveform counter to 1
     movlw   0x01
     movwf   no_wave, A	; begin with no wave

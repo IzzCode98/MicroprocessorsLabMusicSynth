@@ -1,4 +1,3 @@
-#include <pic18_chip_select.inc>
 #include <xc.inc>
 
 global	Test, LoadTMR0_LB, LoadTMR0_HB
@@ -132,7 +131,7 @@ Test4:
 Test4_Oct0:
     movlw  0xF8		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x88 	; Load low byte
+    movlw  0x87 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
