@@ -29,7 +29,7 @@ psect keypad_code, class=CODE
 Keypad_Setup:   
     clrf    LoadTMR0_LB, A
     clrf    LoadTMR0_HB, A
-    movlw   0x04
+    movlw   0x01
     movwf   wave, A	; set waveform counter to 1
     movlw   0x01
     movwf   no_wave, A	; begin with no wave
