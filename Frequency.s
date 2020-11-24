@@ -24,21 +24,21 @@ Test:
 Test1_Oct0:
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x1E 	; Load low byte
+    movlw  0x4D 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test1_Oct1:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x8E 	; Load low byte
+    movlw  0xC5 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
 Test1_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xC6 	; Load low byte
+    movlw  0xFD 	; Load low byte
     movwf  LoadTMR0_LB, A
     return     
     
@@ -59,21 +59,21 @@ Test2:
 Test2_Oct0:
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x9D 	; Load low byte
+    movlw  0xCD 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test2_Oct1:
-    movlw  0xFB		; Load high byte
+    movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xCE 	; Load low byte
+    movlw  0x05 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test2_Oct2:
-    movlw  0xFD		; Load high byte
+    movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xE6		; Load low byte
+    movlw  0x1D		; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
@@ -94,7 +94,7 @@ Test3:
 Test3_Oct0:
     movlw  0xF8		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x16 	; Load low byte
+    movlw  0x47 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
@@ -102,14 +102,14 @@ Test3_Oct0:
 Test3_Oct1:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x0A 	; Load low byte
+    movlw  0x41 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
 Test3_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x04 	; Load low byte
+    movlw  0x3B 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
 
@@ -131,21 +131,21 @@ Test4:
 Test4_Oct0:
     movlw  0xF8		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x87 	; Load low byte
+    movlw  0xB9 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test4_Oct1:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x43 	; Load low byte
+    movlw  0x7A 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
 
 Test4_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x21 	; Load low byte
+    movlw  0x57 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
@@ -164,23 +164,23 @@ Test5:
     goto    Test5_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
     
 Test5_Oct0:
-    movlw  0xF8		; Load high byte
+    movlw  0xF9		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xF3 	; Load low byte
+    movlw  0x26 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test5_Oct1:
     movlw  0xFC 	; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x79 	; Load low byte
+    movlw  0xB0 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test5_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x3C 	; Load low byte
+    movlw  0x71 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
 
@@ -201,21 +201,21 @@ Test6:
 Test6_Oct0:
     movlw  0xF9		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x58 	; Load low byte
+    movlw  0x8C	        ; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test6_Oct1:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xAB		; Load low byte
+    movlw  0xE3		; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test6_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x55		; Load low byte
+    movlw  0x8A		; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
@@ -236,21 +236,21 @@ Test7:
 Test7_Oct0:
     movlw  0xF9		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xB8 	; Load low byte
+    movlw  0xEC 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test7_Oct1:
-    movlw  0xFC		; Load high byte
+    movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xDB 	; Load low byte
+    movlw  0x12 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
 Test7_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x6D 	; Load low byte
+    movlw  0xA2 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
@@ -271,21 +271,21 @@ Test8:
 Test8_Oct0:
     movlw  0xFA		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x12 	; Load low byte
+    movlw  0x47 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test8_Oct1:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x08 	; Load low byte
+    movlw  0x3F 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
 Test8_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x83		; Load low byte
+    movlw  0xB8		; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
@@ -306,21 +306,21 @@ Test9:
 Test9_Oct0:
     movlw  0xFA		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x67 	; Load low byte
+    movlw  0x9C 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test9_Oct1:
-    movlw  0xFd		; Load high byte
+    movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x33 	; Load low byte
+    movlw  0x6A 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test9_Oct2:
-    movlw  0xFE	; Load high byte
+    movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x99	; Load low byte
+    movlw  0xCD		; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
@@ -341,21 +341,21 @@ Test10:
 Test10_Oct0:
     movlw  0xFA		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xB8 	; Load low byte
+    movlw  0xED 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test10_Oct1:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x5B 	; Load low byte
+    movlw  0x92 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test10_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xAD		; Load low byte
+    movlw  0xE1		; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
@@ -376,21 +376,21 @@ Test11:
 Test11_Oct0:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x03 	; Load low byte
+    movlw  0x39 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
 
 Test11_Oct1:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x81 	; Load low byte
+    movlw  0xB8 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
 
 Test11_Oct2:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xC0 	; Load low byte
+    movlw  0xF3 	; Load low byte
     movwf  LoadTMR0_LB, A
     return      
     
@@ -411,21 +411,21 @@ Test12:
 Test12_Oct0:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0x4B 	; Load low byte
+    movlw  0x81 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
 Test12_Oct1:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xA5 	; Load low byte
+    movlw  0xDB 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
 Test12_Oct2:
-    movlw  0xFE		; Load high byte
+    movlw  0xFF		; Load high byte
     movwf  LoadTMR0_HB, A
-    movlw  0xD2 	; Load low byte
+    movlw  0x05 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
 
