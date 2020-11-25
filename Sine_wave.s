@@ -1,4 +1,5 @@
 #include <xc.inc>
+    
 
 extrn	Reset_wave
 global	Sine_setup, Sine_wave
