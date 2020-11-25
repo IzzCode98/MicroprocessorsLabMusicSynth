@@ -82,7 +82,7 @@ Test2_Oct3:
     return
     
 Test3:
-    movlw   11101011B	;keypad key 3
+    movlw   11101011B	;keypad key 3 = note B
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test4
     movlw   0x00
@@ -118,7 +118,7 @@ Test3_Oct3:
     return  
 
 Test4:
-    movlw   11100111B	;keypad key F
+    movlw   11100111B	;keypad key F = note C
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test5
     movlw   0x00
@@ -154,7 +154,7 @@ Test4_Oct3:
     return  
     
 Test5:
-    movlw   11011110B	;keypad key 4
+    movlw   11011110B	;keypad key 4 = note C#
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test6
     movlw   0x00
@@ -189,7 +189,7 @@ Test5_Oct3:
     return  
 
 Test6:
-    movlw   11011101B	;keypad key 2 = note A#
+    movlw   11011101B	;keypad key 5 = note D
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test7
     movlw   0x00
@@ -224,7 +224,7 @@ Test6_Oct3:
     return  
     
 Test7:
-    movlw   11011011B	;keypad key 2 = note A#
+    movlw   11011011B	;keypad key 6 = note D#
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test8
     movlw   0x00
@@ -259,7 +259,7 @@ Test7_Oct3:
     return  
     
 Test8:
-    movlw   11010111B	;keypad key 2 = note A#
+    movlw   11010111B	;keypad key E = note E
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test9
     movlw   0x00
@@ -294,7 +294,7 @@ Test8_Oct3:
     return  
     
 Test9:
-    movlw   10111110B	;keypad key 2 = note A#
+    movlw   10111110B	;keypad key 7 = note F
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test10
     movlw   0x00
@@ -329,7 +329,7 @@ Test9_Oct3:
     return  
     
 Test10:
-    movlw   10111101B	;keypad key 2 = note A#
+    movlw   10111101B	;keypad key 8 = note F#
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test11
     movlw   0x00
@@ -364,7 +364,7 @@ Test10_Oct3:
     return  
     
 Test11:
-    movlw   10111011B	;keypad key 2 = note A#
+    movlw   10111011B	;keypad key 9 = note G
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test12
     movlw   0x00
@@ -399,7 +399,7 @@ Test11_Oct3:
     return      
     
 Test12:
-    movlw   10110111B	;keypad key 2 = note A#
+    movlw   10110111B	;keypad key D = note G#
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test13
     movlw   0x00
@@ -434,7 +434,7 @@ Test12_Oct3:
     return  
 
 Test13:
-    movlw   01111110B	;keypad key 2 = note A#
+    movlw   01111110B	;keypad key A = octave 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test14
     movlw   0x00
@@ -444,7 +444,7 @@ Test13:
     return 
     
 Test14:
-    movlw   01111101B	;keypad key 1
+    movlw   01111101B	;keypad key 0 = octave 2
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test15
     movlw   0x01
@@ -454,7 +454,7 @@ Test14:
     return    
     
 Test15:
-    movlw   01111011B	;keypad key 1
+    movlw   01111011B	;keypad key B = octave 3
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test16
     movlw   0x02
@@ -464,7 +464,7 @@ Test15:
     return   
     
 Test16:
-    movlw   01110111B	;keypad key 1
+    movlw   01110111B	;keypad key C = change waveform
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test17
     TSTFSZ  check_press, A	;test check_press, skip if 0
