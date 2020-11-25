@@ -14,28 +14,28 @@ Test:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test1_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test1_Oct1
-    goto    Test1_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test1_Oct2
+    goto    Test1_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test1_Oct0:
+Test1_Oct1:
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x4D 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test1_Oct1:
+Test1_Oct2:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xC5 	; Load low byte
     movwf  LoadTMR0_LB, A
     return  
     
-Test1_Oct2:
+Test1_Oct3:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xFD 	; Load low byte
@@ -49,28 +49,28 @@ Test2:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test2_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test2_Oct1
-    goto    Test2_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test2_Oct2
+    goto    Test2_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test2_Oct0:
+Test2_Oct1:
     movlw  0xF7		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xCD 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test2_Oct1:
+Test2_Oct2:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x05 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test2_Oct2:
+Test2_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x1D		; Load low byte
@@ -84,14 +84,14 @@ Test3:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test3_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test3_Oct1
-    goto    Test3_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test3_Oct2
+    goto    Test3_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test3_Oct0:
+Test3_Oct1:
     movlw  0xF8		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x47 	; Load low byte
@@ -99,14 +99,14 @@ Test3_Oct0:
     return
     
     
-Test3_Oct1:
+Test3_Oct2:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x41 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
-Test3_Oct2:
+Test3_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x3B 	; Load low byte
@@ -120,29 +120,29 @@ Test4:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test4_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test4_Oct1
-    goto    Test4_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test4_Oct2
+    goto    Test4_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     return
     
-Test4_Oct0:
+Test4_Oct1:
     movlw  0xF8		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xB9 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test4_Oct1:
+Test4_Oct2:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x7A 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
 
-Test4_Oct2:
+Test4_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x57 	; Load low byte
@@ -156,28 +156,28 @@ Test5:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test5_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test5_Oct1
-    goto    Test5_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test5_Oct2
+    goto    Test5_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test5_Oct0:
+Test5_Oct1:
     movlw  0xF9		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x26 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test5_Oct1:
+Test5_Oct2:
     movlw  0xFC 	; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xB0 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test5_Oct2:
+Test5_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x71 	; Load low byte
@@ -191,28 +191,28 @@ Test6:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test6_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test6_Oct1
-    goto    Test6_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test6_Oct2
+    goto    Test6_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test6_Oct0:
+Test6_Oct1:
     movlw  0xF9		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x8C	        ; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test6_Oct1:
+Test6_Oct2:
     movlw  0xFC		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xE3		; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test6_Oct2:
+Test6_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x8A		; Load low byte
@@ -226,28 +226,28 @@ Test7:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test7_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test7_Oct1
-    goto    Test7_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test7_Oct2
+    goto    Test7_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test7_Oct0:
+Test7_Oct1:
     movlw  0xF9		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xEC 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test7_Oct1:
+Test7_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x12 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
-Test7_Oct2:
+Test7_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xA2 	; Load low byte
@@ -261,28 +261,28 @@ Test8:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test8_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test8_Oct1
-    goto    Test8_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test8_Oct2
+    goto    Test8_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test8_Oct0:
+Test8_Oct1:
     movlw  0xFA		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x47 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test8_Oct1:
+Test8_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x3F 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
-Test8_Oct2:
+Test8_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xB8		; Load low byte
@@ -296,28 +296,28 @@ Test9:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test9_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test9_Oct1
-    goto    Test9_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test9_Oct2
+    goto    Test9_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test9_Oct0:
+Test9_Oct1:
     movlw  0xFA		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x9C 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test9_Oct1:
+Test9_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x6A 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test9_Oct2:
+Test9_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xCD		; Load low byte
@@ -331,28 +331,28 @@ Test10:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test10_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test10_Oct1
-    goto    Test10_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test10_Oct2
+    goto    Test10_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test10_Oct0:
+Test10_Oct1:
     movlw  0xFA		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xED 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test10_Oct1:
+Test10_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x92 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test10_Oct2:
+Test10_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xE1		; Load low byte
@@ -366,28 +366,28 @@ Test11:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test11_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test11_Oct1
-    goto    Test11_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test11_Oct2
+    goto    Test11_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test11_Oct0:
+Test11_Oct1:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x39 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
 
-Test11_Oct1:
+Test11_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xB8 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
 
-Test11_Oct2:
+Test11_Oct3:
     movlw  0xFE		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xF3 	; Load low byte
@@ -401,28 +401,28 @@ Test12:
     movlw   0x00
     movwf   no_wave, A	; turn on wave
     movlw   0x00
-    CPFSGT  octave, A ;check if this is octave 0, skip if not
-    goto    Test12_Oct0
-    movlw   0x01
-    CPFSGT  octave, A ; check if this is octave 1, skip if not
+    CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test12_Oct1
-    goto    Test12_Oct2 ;if not oct 0 or oct 1, then it is oct2 so go to oct2
+    movlw   0x01
+    CPFSGT  octave, A ; check if this is octave 2, skip if not
+    goto    Test12_Oct2
+    goto    Test12_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
     
-Test12_Oct0:
+Test12_Oct1:
     movlw  0xFB		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x81 	; Load low byte
     movwf  LoadTMR0_LB, A
     return
     
-Test12_Oct1:
+Test12_Oct2:
     movlw  0xFD		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0xDB 	; Load low byte
     movwf  LoadTMR0_LB, A
     return 
     
-Test12_Oct2:
+Test12_Oct3:
     movlw  0xFF		; Load high byte
     movwf  LoadTMR0_HB, A
     movlw  0x05 	; Load low byte
