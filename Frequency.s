@@ -1,5 +1,8 @@
 #include <xc.inc>
-    
+
+; this file compares the keypad input with all possible binary combinations to identify which key is being pressed
+    ; upon identifying the key, certain variables are set depending on the function of the key and the value of other variables
+    ; if no key is pressed, the no wave variable is set 
 
 global	Test, LoadTMR0_LB, LoadTMR0_HB
 extrn   Keypad_Setup, wave, no_wave, octave, LoadTMR0_LB, LoadTMR0_HB, check_press

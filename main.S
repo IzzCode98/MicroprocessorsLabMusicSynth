@@ -1,5 +1,7 @@
 #include <xc.inc>
     
+    ;this is the main file which calls the setup routines and addresses the interrupt routine when the code is run
+    ;while the code is running, this file loops through the Keypad_Loading subroutine in Keypad_Input.s
 
 extrn	DAC_Setup, DAC_Int_Hi, DAC_WritePin, Keypad_Setup, Keypad_Loading, Sine_setup
 

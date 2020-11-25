@@ -1,5 +1,8 @@
 #include <xc.inc>
-    
+
+    ;this files generates the different waveforms based on the wave variable
+    ; possible waveform outputs are sawtooth, square, triangle, and sine
+    ; the sine wave subroutine is called in a separate file
 	
 global	Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, Triangle_Wave
 extrn   Keypad_Setup, wave, no_wave, Sine_wave

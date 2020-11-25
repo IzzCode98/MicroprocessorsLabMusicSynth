@@ -1,5 +1,7 @@
 #include <xc.inc>
     
+    ; this file contains the data table for the sine wave and moves the data from program memory to RAM
+    ; this file loops through moving the data into the output on PORTJ when the sine waveform is chosen
 
 extrn	Reset_wave
 global	Sine_setup, Sine_wave

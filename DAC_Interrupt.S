@@ -1,5 +1,6 @@
 #include <xc.inc>
     
+    ; this file contains the interrupt service routine and the setup for PORT J and PORT H
 	
 global	DAC_Setup, DAC_Int_Hi, DAC_WritePin
 extrn   Sawtooth_Wave, Reset_wave, Square_Wave, Waveform, LoadTMR0_LB, LoadTMR0_HB, Triangle_Wave, Sine_wave
