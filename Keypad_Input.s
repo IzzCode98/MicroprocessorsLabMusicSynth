@@ -24,11 +24,12 @@ Keypad_Setup:
     clrf    LoadTMR0_LB, A
     clrf    LoadTMR0_HB, A
     movlw   0x04
-    movwf   wave, A	; set waveform counter to 1
+    movwf   wave, A	; set waveform counter to sine wave
     movlw   0x01
     movwf   no_wave, A	; begin with no wave
+    movlw   0x01
+    movwf   octave, A	; set octave counter to octave 1
     movlw   0x00
-    movwf   octave, A	; set octave counter to 0
     movwf   check_press, A	; set check_press counter to 0 (no button pressed)
     clrf    TRISD, A     ; sets PORTD as output
     banksel PADCFG1     ; selects bank to the location of PADCFG1
@@ -45,7 +46,7 @@ Keypad_Loading:
     movwf   0x10, A
     call    delay
 
-    movff   PORTE, key_column     ; move the value input at port E to address 0x30
+    movff   PORTE, key_column     ; move the value input at port E to address key_column
 
     movlw   0xf0     ; 11110000 binary for last four bits as input
     movwf   TRISE, A     ; set tristate D value to be 1's for last four pins therefore input pins
@@ -54,7 +55,7 @@ Keypad_Loading:
     movwf   0x10, A    
     call    delay   
 
-    movff   PORTE, key_row    ; move the value input at port E to address 0x40
+    movff   PORTE, key_row    ; move the value input at port E to address key_row
 
     movlw   0x0
     call     loaddata

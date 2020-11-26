@@ -17,10 +17,10 @@ Test:
     goto    Test2
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test1_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test1_Oct2
     goto    Test1_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -52,10 +52,10 @@ Test2:
     goto    Test3
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test2_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test2_Oct2
     goto    Test2_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -87,10 +87,10 @@ Test3:
     goto    Test4
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test3_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test3_Oct2
     goto    Test3_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -123,10 +123,10 @@ Test4:
     goto    Test5
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test4_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test4_Oct2
     goto    Test4_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -159,10 +159,10 @@ Test5:
     goto    Test6
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test5_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test5_Oct2
     goto    Test5_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -194,10 +194,10 @@ Test6:
     goto    Test7
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test6_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test6_Oct2
     goto    Test6_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -229,10 +229,10 @@ Test7:
     goto    Test8
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test7_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test7_Oct2
     goto    Test7_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -264,10 +264,10 @@ Test8:
     goto    Test9
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test8_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test8_Oct2
     goto    Test8_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -299,10 +299,10 @@ Test9:
     goto    Test10
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test9_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test9_Oct2
     goto    Test9_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -334,10 +334,10 @@ Test10:
     goto    Test11
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test10_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test10_Oct2
     goto    Test10_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -369,10 +369,10 @@ Test11:
     goto    Test12
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test11_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test11_Oct2
     goto    Test11_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -404,10 +404,10 @@ Test12:
     goto    Test13
     movlw   0x00
     movwf   no_wave, A	; turn on wave
-    movlw   0x00
+    movlw   0x01
     CPFSGT  octave, A ;check if this is octave 1, skip if not
     goto    Test12_Oct1
-    movlw   0x01
+    movlw   0x02
     CPFSGT  octave, A ; check if this is octave 2, skip if not
     goto    Test12_Oct2
     goto    Test12_Oct3 ;if not oct1 or oct2, then it is oct3 so go to oct3
@@ -437,7 +437,7 @@ Test13:
     movlw   01111110B	;keypad key A = octave 1
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test14
-    movlw   0x00
+    movlw   0x01
     movwf   octave, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
@@ -447,7 +447,7 @@ Test14:
     movlw   01111101B	;keypad key 0 = octave 2
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test15
-    movlw   0x01
+    movlw   0x02
     movwf   octave, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
@@ -457,7 +457,7 @@ Test15:
     movlw   01111011B	;keypad key B = octave 3
     CPFSEQ  LATD, A	;compare f with W, skip if equal
     goto    Test16
-    movlw   0x02
+    movlw   0x03
     movwf   octave, A
     movlw   0x01
     movwf   no_wave, A	; show no wave when button pressed
