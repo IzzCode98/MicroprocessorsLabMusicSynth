@@ -11,11 +11,12 @@ psect	dac_code, class=CODE
 DAC_Int_Hi:	
 	btfss	TMR0IF		; check that this is timer0 interrupt
 	retfie	f		; if not then return
-	
+	call	Load_Timer0
+
 	call	Waveform	;calls waveform based on wave counter
 
 	call	DAC_WritePin	;load data change onto converter
-	call	Load_Timer0
+	
 	bcf	TMR0IF		; clear interrupt flag
 	retfie	f		; fast return from interrupt
 	
